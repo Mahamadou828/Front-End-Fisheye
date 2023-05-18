@@ -1,37 +1,85 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+<html lang="fr">
+    <head>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+        <title>Fisheye - photographe </title>
+    </head>
+    <body>
+        <header>
+            <img alt="Fisheye Logo" src="assets/images/logo.png" class="logo"/>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+        <main id="main">
+            <section id="profile" class="photograph_profile"></section>
+            <section id="filter" class="filter_section">
+                <label for="filter-option">
+                    Trier par:
+                </label>
+                <select id="filter-option">
+                    <option value="popularity">Popularité</option>
+                    <option value="date">Date</option>
+                    <option value="title">Titre</option>
+                </select>
+            </section>
+            <section id="gallery" class="gallery"></section>
+
+            <article class="price_tag" id="price-tag"></article>
+
+            <section aria-label="image closeup view" class="lightbox" id="lightBox">
+                <span aria-label="Close Dialog" class="close"></span>
+                <div class="container">
+                    <span aria-label="Previous image" class="arrow"></span>
+                    <article>
+
+                    </article>
+                    <span aria-label="Next image" class="arrow right"></span>
+                </div>
+            </section>
+
+            <section id="form_section" class="form_section">
+                <form class="contact_form">
+                    <header>
+                        <h2>
+                            Contactez-moi
+                            <br>
+                            <span id="contact_name"></span>
+                        </h2>
+                        <span aria-label="Close Contact form" class="close"></span>
+                    </header>
+                    <div class="form_input">
+                        <label for="name">Prénom</label><br>
+                        <input aria-labelledby="name" class="text-control" type="text" id="name" name="first" minlength="2"/><br>
+                        <p aria-label="name invalid" class="error name-error">prénom invalide</p>
+                    </div>
+                    <div class="form_input">
+                        <label for="surname">Nom</label><br>
+                        <input aria-labelledby="surname" class="text-control" type="text" id="surname" name="last"/>
+                        <br>
+                        <p aria-label="surname invalid" class="error surname-error">nom invalide</p>
+                    </div>
+                    <div class="form_input">
+                        <label for="email">E-mail</label><br>
+                        <input aria-labelledby="email" class="text-control" type="email" id="email" name="email"/>
+                        <br>
+                        <p aria-label="email invalid" class="error email-error">email invalide</p>
+                    </div>
+
+                    <div class="form_input">
+                        <label for="message">Votre Message</label><br>
+                        <textarea aria-labelledby="message" rows="10" cols="65" id="message" name="message"></textarea>
+                        <p aria-label="message invalid" class="error message-error">message invalide</p>
+                    </div>
+                    <button aria-label="Send" class="form_submit" type="submit">
+                        Envoyer
+                    </button>
+                </form>
+            </section>
+
+        </main>
+        <script src="scripts/factories/photographer.js"></script>
+        <script src="/scripts/pages/photographer.js"></script>
+        <script src="/scripts/utils/contactForm.js"></script>
+    </body>
 </html>
