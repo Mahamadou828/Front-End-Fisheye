@@ -1,6 +1,3 @@
-//custom event to handle when a photo is like
-let test = new Event("test", {bubbles: true})
-
 function photographerFactory(data) {
 
     function getUserCardDOM() {
@@ -69,6 +66,7 @@ function photographerFactory(data) {
         const contactBtn = document.createElement("button")
         contactBtn.setAttribute("aria-label", "Contact Me")
         contactBtn.textContent = "Contactez-moi"
+        
         //handle contact form opening
         contactBtn.addEventListener("click", displayModal)
 
@@ -98,7 +96,7 @@ function galleryFactory(photos, totalLike) {
             let media = {}
 
             switch (Boolean(photos[i].image)) {
-                case true:
+                case true: {
                     const img = document.createElement("img")
                     img.setAttribute("src", `assets/images/${photos[i].image}`)
                     img.setAttribute("alt", photos[i].title)
@@ -108,23 +106,24 @@ function galleryFactory(photos, totalLike) {
 
                         const container = document.getElementById("lightBox")
                         container.dataset.index = `${i}`
-                        container.style.display="block"
+                        container.style.display = "block"
                     })
                     media = img
                     break
-                case false:
+                }
+                case false: {
                     const video = document.createElement("video")
                     video.setAttribute("src", `assets/images/${photos[i].video}`)
                     video.setAttribute("alt", photos[i].title)
                     video.addEventListener("click", () => {
-                        console.log("test")
                         createLightboxVideo(photos[i])
 
                         const container = document.getElementById("lightBox")
                         container.dataset.index = `${i}`
-                        container.style.display="block"
+                        container.style.display = "block"
                     })
                     media = video
+                }
             }
 
 

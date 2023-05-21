@@ -86,23 +86,18 @@ function filterPhoto(value, photos) {
     switch (value) {
         case "popularity":
             return photos.sort((a, b) => b.likes - a.likes)
-            break
         case "title":
             return photos.sort((a, b) => new Date(b.date) - new Date(a.Date))
-            break
         case "date":
             return photos.sort((a,b) => a.title.localeCompare(b.title))
-            break
     }
 }
 
-async function displayNotFound() {}
 
 async function init() {
     const params = new URL(document.location).searchParams
     if(!params.get("id") || !Number.isSafeInteger(+params)) {
         //@todo implement the not found screen
-        // console.log("not found")
     }
     let {profile, photos} = await getPhotographer(+params.get("id"))
 
@@ -136,7 +131,6 @@ async function init() {
 
     //handling the key navigation
     window.addEventListener("keydown", ({code}) => {
-        console.log(code)
         switch (code) {
             case "ArrowLeft":
                 lightBoxPrev(photos)()
